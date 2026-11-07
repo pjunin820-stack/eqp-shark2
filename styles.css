@@ -1,0 +1,420 @@
+/* PelePlus Skincare - Design System & Custom Styles */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap');
+
+:root {
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  
+  /* Brand Color Palette - Light */
+  --color-primary: #1F3A30;       /* Deep Forest / Eucalyptus */
+  --color-primary-light: #2D5244;
+  --color-primary-dark: #142820;
+  --color-accent: #D48C70;        /* Warm Terracotta / Rose Sand */
+  --color-accent-hover: #BF785D;
+  --color-accent-soft: #F9EBE6;
+  --color-bg-base: #FAF8F5;       /* Warm Alabaster / Milk */
+  --color-bg-surface: #FFFFFF;
+  --color-bg-subtle: #F3EFEA;
+  --color-text-main: #23201D;
+  --color-text-muted: #6B6560;
+  --color-border: #E8E2D9;
+  --color-border-subtle: #F0ECE4;
+  --color-badge-gold: #C59B27;
+  
+  --shadow-sm: 0 1px 2px 0 rgba(31, 58, 48, 0.05);
+  --shadow-md: 0 4px 16px -2px rgba(31, 58, 48, 0.08), 0 2px 6px -1px rgba(31, 58, 48, 0.04);
+  --shadow-lg: 0 12px 32px -4px rgba(31, 58, 48, 0.12), 0 4px 12px -2px rgba(31, 58, 48, 0.06);
+  --shadow-glow: 0 0 35px rgba(212, 140, 112, 0.25);
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.75rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  background-color: var(--color-bg-base);
+  color: var(--color-text-main);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+  overflow-x: hidden;
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Typography Helpers */
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* Texture Smear Effect */
+.texture-bg {
+  background-image: radial-gradient(circle at 10% 20%, rgba(249, 235, 230, 0.7) 0%, transparent 40%),
+                    radial-gradient(circle at 90% 80%, rgba(232, 226, 217, 0.5) 0%, transparent 45%);
+}
+
+/* Glassmorphism */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.glass-nav {
+  background: rgba(250, 248, 245, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--color-border-subtle);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+/* Custom Jar 3D Visual in CSS */
+.product-jar-container {
+  perspective: 1000px;
+}
+
+.jar-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(212, 140, 112, 0.22) 0%, rgba(45, 82, 68, 0.08) 50%, transparent 75%);
+  border-radius: 50%;
+  filter: blur(40px);
+  z-index: 0;
+  animation: pulseGlow 6s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+  0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.7; }
+  100% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+}
+
+/* Badge Pulse */
+@keyframes softPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+
+.animate-soft-pulse {
+  animation: softPulse 3s infinite ease-in-out;
+}
+
+/* Shimmer Effect for CTAs */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent,
+    rgba(255, 255, 255, 0.25),
+    transparent
+  );
+  transform: rotate(30deg);
+  animation: shimmerMove 3.5s infinite;
+}
+
+@keyframes shimmerMove {
+  0% { transform: translateX(-100%) rotate(30deg); }
+  35% { transform: translateX(100%) rotate(30deg); }
+  100% { transform: translateX(100%) rotate(30deg); }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF8F5;
+}
+::-webkit-scrollbar-thumb {
+  background: #D8D2C7;
+  border-radius: 9999px;
+  border: 2px solid #FAF8F5;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B8B0A2;
+}
+
+/* Accordion Smooth Transitions */
+.accordion-content {
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.accordion-item.active .accordion-content {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.accordion-item.active .accordion-chevron {
+  transform: rotate(180deg);
+}
+
+/* Custom Toast Notification */
+.toast-notice {
+  transform: translateY(120%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.toast-notice.show {
+  transform: translateY(0);
+}
+
+/* Interactive Payment Credit Card Preview */
+.credit-card-preview {
+  background: linear-gradient(135deg, #1F3A30 0%, #2D5244 50%, #142820 100%);
+  border-radius: 1.25rem;
+  box-shadow: 0 14px 28px rgba(31, 58, 48, 0.25), 0 10px 10px rgba(31, 58, 48, 0.15);
+  color: #FFFFFF;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.credit-card-preview::before {
+  content: '';
+  position: absolute;
+  top: -60%;
+  right: -30%;
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, rgba(212, 140, 112, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.credit-card-chip {
+  width: 44px;
+  height: 32px;
+  background: linear-gradient(135deg, #ECC880 0%, #D4A84D 50%, #B88928 100%);
+  border-radius: 6px;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.credit-card-chip::after {
+  content: '';
+  position: absolute;
+  top: 25%;
+  left: 20%;
+  right: 20%;
+  bottom: 25%;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+/* Payment Method Tab Active State */
+.pay-tab-btn.active {
+  border-color: #1F3A30;
+  background-color: #FAF8F5;
+  color: #1F3A30;
+  box-shadow: 0 2px 8px rgba(31, 58, 48, 0.08);
+}
+
+/* Theme Toggle Button Animation */
+#theme-toggle-btn {
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease, border-color 0.3s ease;
+}
+#theme-toggle-btn:hover {
+  transform: scale(1.08);
+}
+#theme-toggle-btn:active {
+  transform: scale(0.95);
+}
+
+/* ============================================================
+   DARK THEME SYSTEM (LUXURY OBSIDIAN & EUCALYPTUS PALETTE)
+============================================================ */
+html.dark {
+  --color-bg-base: #0D1410;
+  --color-bg-surface: #141F19;
+  --color-bg-subtle: #101914;
+  --color-text-main: #F4EFEB;
+  --color-text-muted: #A39E96;
+  --color-border: #23332A;
+  --color-border-subtle: #1B2921;
+  background-color: #0D1410;
+  color: #F4EFEB;
+}
+
+html.dark body {
+  background-color: #0D1410;
+  color: #F4EFEB;
+}
+
+/* Background Texture in Dark Mode */
+html.dark .texture-bg {
+  background-image: radial-gradient(circle at 10% 20%, rgba(212, 140, 112, 0.12) 0%, transparent 45%),
+                    radial-gradient(circle at 90% 80%, rgba(31, 58, 48, 0.4) 0%, transparent 50%);
+}
+
+/* Pinned Header Glass in Dark Mode */
+html.dark .glass-nav {
+  background: rgba(13, 20, 16, 0.94);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+html.dark .glass-panel {
+  background: rgba(20, 31, 25, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Sections backgrounds */
+html.dark .bg-white {
+  background-color: #141F19;
+}
+
+html.dark .bg-\[\#FAF8F5\],
+html.dark .bg-\[\#F2EDE4\],
+html.dark .bg-stone-50 {
+  background-color: #0F1713;
+}
+
+html.dark .bg-stone-100 {
+  background-color: #1A2820;
+}
+
+html.dark .bg-white\/70,
+html.dark .bg-white\/80,
+html.dark .bg-white\/90,
+html.dark .bg-white\/95 {
+  background-color: rgba(20, 31, 25, 0.9);
+}
+
+/* Typography in Dark Mode */
+html.dark .text-stone-900,
+html.dark .text-stone-800 {
+  color: #F5F1EB;
+}
+
+html.dark .text-stone-700 {
+  color: #E2DDD5;
+}
+
+html.dark .text-stone-600 {
+  color: #ABA49B;
+}
+
+html.dark .text-stone-500 {
+  color: #8E8880;
+}
+
+html.dark .text-stone-400 {
+  color: #78736B;
+}
+
+/* Border colors */
+html.dark .border-stone-200,
+html.dark .border-stone-300,
+html.dark .border-stone-200\/80,
+html.dark .border-stone-200\/70,
+html.dark .border-stone-200\/60,
+html.dark .border-stone-100 {
+  border-color: #23332A;
+}
+
+/* Cards & Modules */
+html.dark .kit-card,
+html.dark .review-card,
+html.dark .accordion-item {
+  background-color: #141F19;
+  border-color: #23332A;
+}
+
+html.dark .accordion-header:hover {
+  background-color: #1A2820;
+}
+
+html.dark .kit-card.bg-\[\#FAF8F5\] {
+  background-color: #17241E;
+}
+
+/* Active Payment Tab in Dark Mode */
+html.dark .pay-tab-btn.active {
+  border-color: #D48C70;
+  background-color: #1C2922;
+  color: #F4EFEB;
+}
+
+/* Form Inputs in Dark Mode */
+html.dark input,
+html.dark select,
+html.dark textarea {
+  background-color: #101914;
+  color: #F5F2ED;
+  border-color: #2B3D33;
+}
+
+html.dark input::placeholder {
+  color: #63736A;
+}
+
+html.dark input:focus,
+html.dark select:focus {
+  border-color: #D48C70;
+  background-color: #121D17;
+}
+
+/* QR Code Display & Pix Panel in Dark Mode */
+html.dark #pay-panel-pix svg rect[fill="white"] {
+  fill: #FFFFFF;
+}
+
+/* Floating bottom bar in Dark Mode */
+html.dark #floating-cta-bar {
+  background-color: rgba(13, 20, 16, 0.96);
+  border-top-color: #23332A;
+}
+
+/* Modals in Dark Mode */
+html.dark #checkout-modal > div,
+html.dark #success-modal > div {
+  background-color: #141F19;
+  border: 1px solid #283B30;
+}
+
+/* Scrollbar Dark Mode */
+html.dark ::-webkit-scrollbar-track {
+  background: #0D1410;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: #283B30;
+  border-color: #0D1410;
+}
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #395244;
+}
+
+/* Selection */
+::selection {
+  background-color: #E8C5B8;
+  color: #1F3A30;
+}

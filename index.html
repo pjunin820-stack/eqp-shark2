@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>A Nova Era dos Programadores | O Futuro do Código, Java & HTML</title>
+  <meta name="description" content="Descubra a revolução da programação na era da inteligência artificial. Fundamentos sólidos com Java e HTML, instruções práticas e o roadmap do desenvolvedor moderno.">
+  
+  <!-- Fontes Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  
+  <!-- Ícones Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Folha de Estilos Principal -->
+  <link rel="stylesheet" href="style.css?v=20261107">
+</head>
+<body>
+
+  <!-- Canvas Interativo de Partículas / Constelação Cibernética -->
+  <canvas id="matrixCanvas" class="bg-matrix-canvas"></canvas>
+
+  <!-- Canvas de Confetes para Conquistas -->
+  <canvas id="confettiCanvas" class="confetti-canvas"></canvas>
+
+  <!-- Background Animated Glow Orbs -->
+  <div class="glow-orb orb-1"></div>
+  <div class="glow-orb orb-2"></div>
+  <div class="glow-orb orb-3"></div>
+
+  <!-- Barra de Navegação -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="brand-logo">
+        <div class="logo-symbol animate-glow">
+          <i class="fa-solid fa-code"></i>
+        </div>
+        <span class="logo-text">Dev<span class="gradient-text">Era</span></span>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#nova-era" class="nav-item">A Nova Era</a>
+        <a href="#fundamentos" class="nav-item">Java & HTML</a>
+        <a href="#instrucoes" class="nav-item">Guia & Instruções</a>
+        <a href="#galeria" class="nav-item">Galeria</a>
+        <a href="#quiz" class="nav-item">Diagnóstico</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Botão & Menu de Login Gmail Funcional -->
+        <div class="auth-wrapper" id="authWrapper">
+          <button class="btn btn-gmail" id="loginGmailBtn" title="Fazer login com sua conta Gmail">
+            <svg class="google-svg-icon" viewBox="0 0 24 24" width="18" height="18">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+            </svg>
+            <span>Entrar com Gmail</span>
+          </button>
+
+          <!-- Perfil do Usuário Logado (Alternado via JavaScript) -->
+          <div class="user-profile-menu hidden" id="userProfileMenu">
+            <button class="user-profile-btn" id="userProfileToggle" aria-label="Abrir menu do usuário">
+              <img src="" alt="Avatar do usuário" class="user-avatar" id="userAvatar" onerror="this.src='https://ui-avatars.com/api/?name=Dev&background=00f2fe&color=030712&bold=true&size=120'">
+              <span class="user-name" id="userName">Usuário</span>
+              <span class="user-online-dot"></span>
+              <i class="fa-solid fa-chevron-down user-chevron"></i>
+            </button>
+
+            <!-- Dropdown do Usuário -->
+            <div class="user-dropdown-card hidden" id="userDropdownCard">
+              <div class="dropdown-header">
+                <img src="" alt="Avatar" class="dropdown-avatar" id="dropdownAvatar" onerror="this.src='https://ui-avatars.com/api/?name=Dev&background=00f2fe&color=030712&bold=true&size=120'">
+                <div class="dropdown-user-details">
+                  <strong id="dropdownName">Dev Moderno</strong>
+                  <span id="dropdownEmail">usuario@gmail.com</span>
+                </div>
+              </div>
+              <div class="dropdown-badge">
+                <i class="fa-solid fa-shield-halved text-cyan"></i>
+                <span>Sessão Gmail Conectada</span>
+              </div>
+              <div class="dropdown-divider"></div>
+              <ul class="dropdown-actions">
+                <li><button class="dropdown-link-btn" id="openEditProfileBtn"><i class="fa-solid fa-user-pen text-cyan"></i> Editar Perfil & Foto</button></li>
+                <li><a href="#instrucoes"><i class="fa-solid fa-list-check"></i> Meu Progresso Salvo</a></li>
+                <li><a href="#quiz"><i class="fa-solid fa-chart-pie"></i> Meu Diagnóstico</a></li>
+              </ul>
+              <div class="dropdown-divider"></div>
+              <button class="dropdown-logout-btn" id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Sair da Conta Gmail</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <a href="#instrucoes" class="btn btn-primary btn-sm btn-glow">
+          <span>Trilha Prática</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+        <!-- Toggle Tema Claro / Escuro -->
+        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Alternar tema" title="Alternar tema claro/escuro">
+          <span class="theme-icon-wrap">
+            <i class="fa-solid fa-sun theme-icon-light"></i>
+            <i class="fa-solid fa-moon theme-icon-dark"></i>
+          </span>
+        </button>
+
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Seção Hero -->
+    <section class="hero-section" id="hero">
+      <!-- Badges Flutuantes Animadas no Hero -->
+      <div class="floating-badge badge-float-1" data-parallax="0.05">
+        <i class="fa-brands fa-java text-java"></i>
+        <span>Java 21 LTS: Concorrência Massiva</span>
+      </div>
+      <div class="floating-badge badge-float-2" data-parallax="-0.04">
+        <i class="fa-brands fa-html5 text-html"></i>
+        <span>HTML5 Semântico & Agentes IA</span>
+      </div>
+      <div class="floating-badge badge-float-3" data-parallax="0.06">
+        <i class="fa-solid fa-wand-magic-sparkles text-cyan"></i>
+        <span>Engenharia de Prompt Técnico</span>
+      </div>
+
+      <div class="container hero-content">
+        <div class="hero-badge animate-float">
+          <span class="pulse-dot"></span>
+          <span>A Revolução 2026+: Inteligência Artificial & Engenharia Humana</span>
+        </div>
+
+        <h1 class="hero-title" id="heroAnimatedTitle">
+          <span class="title-line-1">A Nova Era dos</span>
+          <br>
+          <span class="gradient-text-hero title-line-2">Programadores</span>
+          <span class="title-glow-aura"></span>
+          <div class="title-laser-beam"></div>
+        </h1>
+
+        <!-- Efeito Máquina de Escrever -->
+        <div class="hero-typed-container">
+          <span class="typed-prefix">Construindo o futuro com </span>
+          <span id="typedText" class="typed-text"></span>
+          <span class="typed-cursor">|</span>
+        </div>
+
+        <p class="hero-subtitle">
+          Escrever código não é mais apenas digitar sintaxe: agora é sobre orquestrar inteligência, 
+          arquitetar soluções resilientes e dominar as fundações que nunca morrem — como o 
+          <strong class="highlight-html">HTML</strong> e o poderoso <strong class="highlight-java">Java</strong>.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#instrucoes" class="btn btn-primary btn-lg btn-glow">
+            <i class="fa-solid fa-compass"></i>
+            <span>Ver Instruções de Carreira</span>
+          </a>
+          <a href="#fundamentos" class="btn btn-secondary btn-lg btn-hover-border">
+            <i class="fa-solid fa-layer-group"></i>
+            <span>Explorar Java & HTML</span>
+          </a>
+        </div>
+
+        <!-- Estatísticas da Nova Era com Contador Animado e 3D Tilt -->
+        <div class="hero-stats-grid">
+          <div class="stat-card" data-tilt>
+            <div class="stat-icon pulse-icon"><i class="fa-solid fa-bolt"></i></div>
+            <div class="stat-info">
+              <span class="stat-number" data-count="10" data-prefix="+" data-suffix="x">0</span>
+              <span class="stat-label">Velocidade de Prototipação</span>
+            </div>
+          </div>
+          <div class="stat-card" data-tilt>
+            <div class="stat-icon pulse-icon"><i class="fa-brands fa-java text-java"></i></div>
+            <div class="stat-info">
+              <span class="stat-number" data-count="1" data-prefix="#">0</span>
+              <span class="stat-label">Java em Sistemas Críticos</span>
+            </div>
+          </div>
+          <div class="stat-card" data-tilt>
+            <div class="stat-icon pulse-icon"><i class="fa-brands fa-html5 text-html"></i></div>
+            <div class="stat-info">
+              <span class="stat-number" data-count="100" data-suffix="%">0</span>
+              <span class="stat-label">Web Baseada em HTML</span>
+            </div>
+          </div>
+          <div class="stat-card" data-tilt>
+            <div class="stat-icon pulse-icon"><i class="fa-solid fa-brain text-cyan"></i></div>
+            <div class="stat-info">
+              <span class="stat-number">Agente + Dev</span>
+              <span class="stat-label">O Novo Padrão de Trabalho</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção: O Que é a Nova Era -->
+    <section class="section" id="nova-era">
+      <div class="container">
+        <div class="section-header text-center reveal-on-scroll">
+          <span class="section-tag">Mudança de Paradigma</span>
+          <h2 class="section-title">O Que Mudou na Programação Moderna?</h2>
+          <p class="section-description">
+            Passamos da era do "digitador de código" para a era do <strong>Arquiteto de Soluções Inteligentes</strong>.
+            Entenda o que diferencia o profissional ultrapassado do desenvolvedor do futuro.
+          </p>
+        </div>
+
+        <div class="comparison-grid">
+          <!-- Card Antiga Era -->
+          <div class="comparison-card legacy-card reveal-on-scroll" data-tilt>
+            <div class="card-badge legacy-badge">
+              <i class="fa-solid fa-clock-rotate-left"></i> A Era Antiga (Passado)
+            </div>
+            <h3 class="card-title">O Codificador Manual</h3>
+            <ul class="comparison-list">
+              <li>
+                <i class="fa-solid fa-xmark text-danger"></i>
+                <span>Horas gastas escrevendo código boilerplate repetitivo.</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-xmark text-danger"></i>
+                <span>Buscas infinitas em fóruns para solucionar erros simples de sintaxe.</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-xmark text-danger"></i>
+                <span>Conhecimento superficial dependente de frameworks que mudam a cada ano.</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-xmark text-danger"></i>
+                <span>Trabalho isolado e resistência à automação inteligente.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Card Nova Era -->
+          <div class="comparison-card modern-card reveal-on-scroll" data-tilt>
+            <div class="card-badge modern-badge">
+              <i class="fa-solid fa-wand-magic-sparkles animate-spin-slow"></i> A Nova Era (Presente & Futuro)
+            </div>
+            <h3 class="card-title">O Arquiteto Conectado</h3>
+            <ul class="comparison-list">
+              <li>
+                <i class="fa-solid fa-check text-success"></i>
+                <span>Uso de IA para gerar código base e foco em lógica, arquitetura e segurança.</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-check text-success"></i>
+                <span>Domínio profundo de fundamentos como <strong>Java</strong> (backend robusto) e <strong>HTML</strong> (web semântica).</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-check text-success"></i>
+                <span>Capacidade de auditar, refatorar e validar criticamente cada linha gerada por IA.</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-check text-success"></i>
+                <span>Engenharia de prompts, orquestração de microsserviços e entrega contínua de valor.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Pilares da Nova Era -->
+        <div class="pillars-grid">
+          <div class="pillar-card reveal-on-scroll" data-tilt>
+            <div class="pillar-icon cyan-gradient animate-bounce-soft">
+              <i class="fa-solid fa-microchip"></i>
+            </div>
+            <h4>Copilotos & Agentes</h4>
+            <p>O programador não compete com a IA; ele a comanda como uma equipe de assistentes de alta performance.</p>
+          </div>
+
+          <div class="pillar-card reveal-on-scroll" data-tilt>
+            <div class="pillar-icon violet-gradient animate-bounce-soft">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h4>Segurança & Qualidade</h4>
+            <p>Gerar código é fácil; garantir que seja seguro, livre de alucinações e escalável tornou-se a habilidade de ouro.</p>
+          </div>
+
+          <div class="pillar-card reveal-on-scroll" data-tilt>
+            <div class="pillar-icon orange-gradient animate-bounce-soft">
+              <i class="fa-solid fa-cubes"></i>
+            </div>
+            <h4>Fundamentos Fortes</h4>
+            <p>Frameworks vêm e vão. Quem entende a base (DOM, Orientação a Objetos, Concorrência) lidera o mercado.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção de Fundamentos: HTML & Java -->
+    <section class="section bg-dark-surface" id="fundamentos">
+      <div class="container">
+        <div class="section-header text-center reveal-on-scroll">
+          <span class="section-tag">As Rochas da Computação</span>
+          <h2 class="section-title">Por Que HTML e Java Dominam a Nova Era?</h2>
+          <p class="section-description">
+            Mesmo com ferramentas ultrassofisticadas, nenhuma inteligência artificial constrói a web ou 
+            grandes infraestruturas sem estas duas linguagens essenciais.
+          </p>
+        </div>
+
+        <!-- Seletor de Abas Java / HTML -->
+        <div class="tech-tab-controller reveal-on-scroll">
+          <button class="tech-tab active" data-target="tab-java">
+            <i class="fa-brands fa-java text-java"></i>
+            <span>Java: A Fortaleza Corporativa</span>
+          </button>
+          <button class="tech-tab" data-target="tab-html">
+            <i class="fa-brands fa-html5 text-html"></i>
+            <span>HTML: A Estrutura Universal</span>
+          </button>
+        </div>
+
+        <!-- Conteúdo Java -->
+        <div class="tech-tab-content active" id="tab-java">
+          <div class="tech-layout">
+            <div class="tech-info reveal-on-scroll">
+              <div class="tech-badge java-tag">
+                <i class="fa-brands fa-java"></i> Linguagem de Alta Escala
+              </div>
+              <h3 class="tech-title">Java na Era Moderna: Do Legado ao Futuro</h3>
+              <p class="tech-text">
+                Longe de ser apenas uma linguagem corporativa do passado, o Java vive seu momento mais vibrante.
+                Com o lançamento do <strong>Java 21 LTS</strong> e novidades como <em>Virtual Threads (Projeto Loom)</em>, 
+                o Java entrega altíssima performance para nuvem, microsserviços e sistemas bancários que movimentam trilhões.
+              </p>
+
+              <div class="tech-points">
+                <div class="point-item">
+                  <i class="fa-solid fa-check-circle text-java"></i>
+                  <div>
+                    <strong>Tipagem Forte e Confiabilidade:</strong>
+                    <p>IAs cometem menos erros ao gerar código fortemente tipado, tornando o Java ideal para pair-programming com modelos de linguagem.</p>
+                  </div>
+                </div>
+
+                <div class="point-item">
+                  <i class="fa-solid fa-check-circle text-java"></i>
+                  <div>
+                    <strong>Virtual Threads & Performance:</strong>
+                    <p>Milhões de requisições simultâneas com uso mínimo de memória física na nuvem moderna.</p>
+                  </div>
+                </div>
+
+                <div class="point-item">
+                  <i class="fa-solid fa-check-circle text-java"></i>
+                  <div>
+                    <strong>Ecossistema Spring Boot & Quarkus:</strong>
+                    <p>O padrão definitivo para microsserviços corporativos, conteinerização e computação em nuvem.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="quick-facts">
+                <div class="fact">
+                  <span class="fact-num" data-count="90" data-suffix="%+">0</span>
+                  <span class="fact-desc">Das empresas Fortune 500 rodam Java em seus servidores centrais.</span>
+                </div>
+                <div class="fact">
+                  <span class="fact-num">Loom</span>
+                  <span class="fact-desc">Revolução em concorrência leve e escalabilidade massiva.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Código Java Interativo com Efeito Neon -->
+            <div class="code-preview-card reveal-on-scroll" data-tilt>
+              <div class="code-header">
+                <div class="code-dots">
+                  <span class="dot red"></span>
+                  <span class="dot yellow"></span>
+                  <span class="dot green"></span>
+                </div>
+                <span class="code-filename">NovaEraJava21.java</span>
+                <button class="copy-btn" data-clipboard-target="#code-java" title="Copiar código">
+                  <i class="fa-regular fa-copy"></i>
+                </button>
+              </div>
+              <pre><code id="code-java" class="language-java"><span class="token-keyword">package</span> dev.novaera;
+
+<span class="token-comment">// Java Moderno: Record + Virtual Threads + Pattern Matching</span>
+<span class="token-keyword">public class</span> <span class="token-class">NovaEraDev</span> {
+
+    <span class="token-comment">// Records: Estruturas de dados imutáveis sem boilerplate</span>
+    <span class="token-keyword">public record</span> <span class="token-class">DevPrompt</span>(<span class="token-type">String</span> autor, <span class="token-type">String</span> intencao, <span class="token-type">int</span> complexidade) {}
+
+    <span class="token-keyword">public static void</span> <span class="token-function">main</span>(<span class="token-type">String</span>[] args) {
+        <span class="token-keyword">var</span> prompt = <span class="token-keyword">new</span> <span class="token-class">DevPrompt</span>(<span class="token-string">"Dev Moderno"</span>, <span class="token-string">"Criar Microsserviço"</span>, 9);
+
+        <span class="token-comment">// Execução com Virtual Threads (Loom) em alta concorrência</span>
+        <span class="token-keyword">try</span> (<span class="token-keyword">var</span> executor = <span class="token-class">Thread</span>.<span class="token-function">ofVirtual</span>().<span class="token-function">start</span>(() -> {
+            <span class="token-class">System</span>.out.<span class="token-function">println</span>(<span class="token-string">"🚀 Processando com thread virtual leve: "</span> + prompt.intencao());
+        })) {
+            executor.<span class="token-function">join</span>();
+        } <span class="token-keyword">catch</span> (<span class="token-class">InterruptedException</span> e) {
+            <span class="token-class">Thread</span>.<span class="token-function">currentThread</span>().<span class="token-function">interrupt</span>();
+        }
+    }
+}</code></pre>
+              <div class="code-footer">
+                <span class="badge-code"><i class="fa-solid fa-code-compare"></i> Java 21 LTS</span>
+                <span>Virtual Threads & Records</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Conteúdo HTML -->
+        <div class="tech-tab-content" id="tab-html">
+          <div class="tech-layout">
+            <div class="tech-info reveal-on-scroll">
+              <div class="tech-badge html-tag">
+                <i class="fa-brands fa-html5"></i> O Alicerce da Web
+              </div>
+              <h3 class="tech-title">HTML5 Semântico: A Interface Universal da Humanidade</h3>
+              <p class="tech-text">
+                Muitos pensam que HTML é "apenas texto e tags", mas na Nova Era ele é o pilar da <strong>acessibilidade (a11y)</strong>,
+                da interpretação por <strong>modelos de IA e Web Crawlers</strong> e do SEO semântico.
+                Quem não entende HTML produz interfaces inacessíveis, pesadas e invisíveis aos robôs de busca.
+              </p>
+
+              <div class="tech-points">
+                <div class="point-item">
+                  <i class="fa-solid fa-check-circle text-html"></i>
+                  <div>
+                    <strong>Semântica Essencial para Agentes e IA:</strong>
+                    <p>Agentes web navegam pelo DOM usando tags semânticas (<code class="inline-code">&lt;nav&gt;</code>, <code class="inline-code">&lt;main&gt;</code>, <code class="inline-code">&lt;article&gt;</code>). Tags genéricas quebram a inteligência da web.</p>
+                  </div>
+                </div>
+
+                <div class="point-item">
+                  <i class="fa-solid fa-check-circle text-html"></i>
+                  <div>
+                    <strong>Acessibilidade Nativa (a11y):</strong>
+                    <p>O HTML correto fornece suporte a leitores de tela para pessoas com deficiência sem necessidade de centenas de scripts.</p>
+                  </div>
+                </div>
+
+                <div class="point-item">
+                  <i class="fa-solid fa-check-circle text-html"></i>
+                  <div>
+                    <strong>Componentes Modernos Nativos:</strong>
+                    <p>Hoje temos elementos como <code class="inline-code">&lt;dialog&gt;</code>, <code class="inline-code">&lt;details&gt;</code>, <code class="inline-code">&lt;template&gt;</code> nativamente sem sobrecarga de frameworks.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="quick-facts">
+                <div class="fact">
+                  <span class="fact-num" data-count="1.9" data-suffix="B+">0</span>
+                  <span class="fact-desc">De sites dependem de estrutura HTML pura no navegador.</span>
+                </div>
+                <div class="fact">
+                  <span class="fact-num">a11y</span>
+                  <span class="fact-desc">Acessibilidade web começa com semântica de tags corretas.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Código HTML Interativo -->
+            <div class="code-preview-card reveal-on-scroll" data-tilt>
+              <div class="code-header">
+                <div class="code-dots">
+                  <span class="dot red"></span>
+                  <span class="dot yellow"></span>
+                  <span class="dot green"></span>
+                </div>
+                <span class="code-filename">index-semantico.html</span>
+                <button class="copy-btn" data-clipboard-target="#code-html" title="Copiar código">
+                  <i class="fa-regular fa-copy"></i>
+                </button>
+              </div>
+              <pre><code id="code-html" class="language-html"><span class="token-comment">&lt;!-- Estrutura Semântica Moderna para a Nova Era --&gt;</span>
+<span class="token-tag">&lt;header</span> <span class="token-attr">class=</span><span class="token-string">"app-header"</span><span class="token-tag">&gt;</span>
+  <span class="token-tag">&lt;nav</span> <span class="token-attr">aria-label=</span><span class="token-string">"Menu Principal"</span><span class="token-tag">&gt;</span>
+    <span class="token-tag">&lt;a</span> <span class="token-attr">href=</span><span class="token-string">"/"</span> <span class="token-attr">class=</span><span class="token-string">"brand"</span><span class="token-tag">&gt;</span>DevEra<span class="token-tag">&lt;/a&gt;</span>
+  <span class="token-tag">&lt;/nav&gt;</span>
+<span class="token-tag">&lt;/header&gt;</span>
+
+<span class="token-tag">&lt;main</span> <span class="token-attr">id=</span><span class="token-string">"conteudo-principal"</span><span class="token-tag">&gt;</span>
+  <span class="token-tag">&lt;article</span> <span class="token-attr">class=</span><span class="token-string">"post-destaque"</span><span class="token-tag">&gt;</span>
+    <span class="token-tag">&lt;h1&gt;</span>O Futuro dos Desenvolvedores<span class="token-tag">&lt;/h1&gt;</span>
+    <span class="token-tag">&lt;p&gt;</span>Comunicação homem-máquina através de código semântico.<span class="token-tag">&lt;/p&gt;</span>
+    
+    <span class="token-comment">&lt;!-- Elemento nativo moderno modal sem JavaScript pesado --&gt;</span>
+    <span class="token-tag">&lt;dialog</span> <span class="token-attr">id=</span><span class="token-string">"modalAviso"</span><span class="token-tag">&gt;</span>
+      <span class="token-tag">&lt;h2&gt;</span>Pronto para a Nova Era?<span class="token-tag">&lt;/h2&gt;</span>
+      <span class="token-tag">&lt;button</span> <span class="token-attr">method=</span><span class="token-string">"dialog"</span><span class="token-tag">&gt;</span>Fechar<span class="token-tag">&lt;/button&gt;</span>
+    <span class="token-tag">&lt;/dialog&gt;</span>
+  <span class="token-tag">&lt;/article&gt;</span>
+<span class="token-tag">&lt;/main&gt;</span></code></pre>
+              <div class="code-footer">
+                <span class="badge-code"><i class="fa-solid fa-code"></i> HTML5 Semântico</span>
+                <span>A11y & SEO Otimizados</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção de Instruções e Passo a Passo -->
+    <section class="section" id="instrucoes">
+      <div class="container">
+        <div class="section-header text-center reveal-on-scroll">
+          <span class="section-tag">Instruções Práticas</span>
+          <h2 class="section-title">Como Dominar a Nova Era: Guia Passo a Passo</h2>
+          <p class="section-description">
+            Siga estas instruções comprovadas para transformar sua postura profissional de mero digitador para 
+            desenvolvedor de alta performance e liderança técnica.
+          </p>
+        </div>
+
+        <!-- Instruções em Linha do Tempo / Passos -->
+        <div class="timeline-steps">
+          
+          <!-- Passo 1 -->
+          <div class="step-card reveal-on-scroll" data-tilt>
+            <div class="step-number">01</div>
+            <div class="step-content">
+              <div class="step-icon animate-pulse-glow"><i class="fa-solid fa-graduation-cap"></i></div>
+              <h3>Construa Fundações Inabaláveis</h3>
+              <p>
+                Não pule etapas tentando aprender apenas o framework da moda. Dedique tempo para:
+              </p>
+              <ul class="step-tips">
+                <li><i class="fa-solid fa-chevron-right"></i> <strong>HTML5 Puro:</strong> Entenda a árvore DOM, tags semânticas, acessibilidade e SEO técnico.</li>
+                <li><i class="fa-solid fa-chevron-right"></i> <strong>Lógica & Java:</strong> Compreenda Orientação a Objetos, tipos de dados, gerenciamento de memória (JVM) e programação concorrente.</li>
+                <li><i class="fa-solid fa-chevron-right"></i> <strong>Estrutura de Dados:</strong> Listas, árvores, grafos e algoritmos de busca para tomada de decisão consciente.</li>
+              </ul>
+              <div class="step-instruction-box">
+                <i class="fa-solid fa-lightbulb"></i>
+                <span><strong>Instrução Prática:</strong> Crie uma aplicação web com front-end em HTML/CSS semântico e uma API REST em Java Spring Boot sem copiar cegamente.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Passo 2 -->
+          <div class="step-card reveal-on-scroll" data-tilt>
+            <div class="step-number">02</div>
+            <div class="step-content">
+              <div class="step-icon animate-pulse-glow"><i class="fa-solid fa-robot"></i></div>
+              <h3>Integre IA como Seu Pair-Programmer</h3>
+              <p>
+                A inteligência artificial não substitui o programador que pensa; ela substitui o que não pensa. Use IA de forma inteligente:
+              </p>
+              <ul class="step-tips">
+                <li><i class="fa-solid fa-chevron-right"></i> <strong>Engenharia de Contexto:</strong> Forneça exemplos claros de entrada/saída e restrições de arquitetura ao solicitar código.</li>
+                <li><i class="fa-solid fa-chevron-right"></i> <strong>Geração de Testes Unitários:</strong> Peça à IA para gerar casos extremos de teste com JUnit no Java.</li>
+                <li><i class="fa-solid fa-chevron-right"></i> <strong>Refatoração Assistida:</strong> Use LLMs para apontar possíveis vulnerabilidades ou gargalos de concorrência.</li>
+              </ul>
+              <div class="step-instruction-box">
+                <i class="fa-solid fa-lightbulb"></i>
+                <span><strong>Instrução Prática:</strong> Nunca submeta código para produção que você não consiga explicar linha por linha em uma revisão técnica.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Passo 3 -->
+          <div class="step-card reveal-on-scroll" data-tilt>
+            <div class="step-number">03</div>
+            <div class="step-content">
+              <div class="step-icon animate-pulse-glow"><i class="fa-solid fa-cubes-stacked"></i></div>
+              <h3>Pense em Arquitetura e Soluções</h3>
+              <p>
+                O valor do desenvolvedor mudou de "escrever a função" para "desenhar como as funções se conectam de forma escalável e segura":
+              </p>
+              <ul class="step-tips">
+                <li><i class="fa-solid fa-chevron-right"></i> Aprenda microsserviços, mensageria (Kafka, RabbitMQ) e deploy em containers Docker.</li>
+                <li><i class="fa-solid fa-chevron-right"></i> Entenda princípios SOLID, Clean Code e padrões de design (Factory, Observer, Repository).</li>
+                <li><i class="fa-solid fa-chevron-right"></i> Otimize para resiliência: circuit breakers, caching e tolerância a falhas.</li>
+              </ul>
+              <div class="step-instruction-box">
+                <i class="fa-solid fa-lightbulb"></i>
+                <span><strong>Instrução Prática:</strong> Desenhe diagramas de arquitetura antes de escrever a primeira linha de código no seu IDE.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Passo 4 -->
+          <div class="step-card reveal-on-scroll" data-tilt>
+            <div class="step-number">04</div>
+            <div class="step-content">
+              <div class="step-icon animate-pulse-glow"><i class="fa-solid fa-rocket"></i></div>
+              <h3>Soft Skills & Aprendizado Contínuo</h3>
+              <p>
+                Em um mundo onde a máquina gera sintaxe, a habilidade de se comunicar com clareza, entender regras de negócio e liderar projetos é o maior multiplicador de salário:
+              </p>
+              <ul class="step-tips">
+                <li><i class="fa-solid fa-chevron-right"></i> Tradução de problemas de negócios em especificações técnicas precisas.</li>
+                <li><i class="fa-solid fa-chevron-right"></i> Empatia no code review e mentoria de novos membros da equipe.</li>
+                <li><i class="fa-solid fa-chevron-right"></i> Adaptabilidade rápida a novas ferramentas e modelos de agentes autônomos.</li>
+              </ul>
+              <div class="step-instruction-box">
+                <i class="fa-solid fa-lightbulb"></i>
+                <span><strong>Instrução Prática:</strong> Pratique explicar conceitos complexos de Java e HTML para pessoas não técnicas da sua equipe.</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Checklist Interativo de Progresso com Animação -->
+        <div class="interactive-checklist-box reveal-on-scroll" data-tilt>
+          <div class="checklist-header">
+            <div>
+              <h3><i class="fa-solid fa-list-check text-cyan"></i> Checklist Interativo do Dev da Nova Era</h3>
+              <p>Marque os passos que você já dominou para medir sua evolução técnica:</p>
+            </div>
+            <div class="progress-container">
+              <span id="progressText" class="progress-text">0% Concluído</span>
+              <div class="progress-bar-bg">
+                <div id="progressBar" class="progress-bar-fill"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="checklist-grid" id="checklistGrid">
+            <label class="check-item">
+              <input type="checkbox" class="task-check" data-id="html-semantic">
+              <span class="custom-check"></span>
+              <span class="check-label">Domínio de HTML5 Semântico e Acessibilidade (a11y)</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" class="task-check" data-id="java-oop">
+              <span class="custom-check"></span>
+              <span class="check-label">Fundamentos de Orientação a Objetos e Concorrência em Java</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" class="task-check" data-id="ai-prompts">
+              <span class="custom-check"></span>
+              <span class="check-label">Habilidade em Engenharia de Prompt e Code Review com IA</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" class="task-check" data-id="api-rest">
+              <span class="custom-check"></span>
+              <span class="check-label">Construção e consumo de APIs RESTful resilientes</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" class="task-check" data-id="git-devops">
+              <span class="custom-check"></span>
+              <span class="check-label">Versionamento Git profissional e pipelines CI/CD</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" class="task-check" data-id="critical-audit">
+              <span class="custom-check"></span>
+              <span class="check-label">Auditoria de segurança e validação crítica de código</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção de Galeria Visual -->
+    <section class="section bg-dark-surface" id="galeria">
+      <div class="container">
+        <div class="section-header text-center reveal-on-scroll">
+          <span class="section-tag">Ambiente & Tecnologia</span>
+          <h2 class="section-title">O Ecossistema Visual da Programação</h2>
+          <p class="section-description">
+            Do design de interfaces web com HTML à robustez de clusters em nuvem rodando Java: 
+            a rotina estética e imersiva do desenvolvedor moderno.
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          <!-- Card Galeria 1 -->
+          <div class="gallery-card reveal-on-scroll" data-tilt>
+            <div class="gallery-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80" alt="Código em telas de alta resolução" loading="lazy">
+              <div class="gallery-overlay">
+                <span class="gallery-tag">Código & Sintaxe</span>
+                <h4>Imersão em Desenvolvimento</h4>
+                <p>Telas dedicadas a arquitetura limpa, linters automáticos e depuração em tempo real.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card Galeria 2 -->
+          <div class="gallery-card reveal-on-scroll" data-tilt>
+            <div class="gallery-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80" alt="Matriz digital e segurança de dados" loading="lazy">
+              <div class="gallery-overlay">
+                <span class="gallery-tag">Java Cloud & Segurança</span>
+                <h4>Infraestrutura de Missão Crítica</h4>
+                <p>Sistemas backend processando milhões de transações simultâneas com estabilidade.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card Galeria 3 -->
+          <div class="gallery-card reveal-on-scroll" data-tilt>
+            <div class="gallery-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=800&q=80" alt="Interface web moderna e HTML" loading="lazy">
+              <div class="gallery-overlay">
+                <span class="gallery-tag">HTML5 & Web Design</span>
+                <h4>Interfaces Humanizadas</h4>
+                <p>A união de tipografia precisa, acessibilidade semântica e experiência de usuário inesquecível.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card Galeria 4 -->
+          <div class="gallery-card reveal-on-scroll" data-tilt>
+            <div class="gallery-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80" alt="Colaboração e inteligência artificial" loading="lazy">
+              <div class="gallery-overlay">
+                <span class="gallery-tag">Colaboração & IA</span>
+                <h4>Sinergia Humano-Máquina</h4>
+                <p>Programadores liderando agentes autônomos para acelerar lançamentos inovadores.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção de Diagnóstico Interativo / Quiz -->
+    <section class="section" id="quiz">
+      <div class="container">
+        <div class="quiz-container reveal-on-scroll" data-tilt>
+          <div class="section-header text-center">
+            <span class="section-tag">Autoavaliação Rápida</span>
+            <h2 class="section-title">Diagnóstico de Prontidão: Qual o Seu Perfil?</h2>
+            <p class="section-description">
+              Responda a 3 perguntas rápidas e receba uma orientação sob medida para sua carreira na Nova Era.
+            </p>
+          </div>
+
+          <form id="eraQuizForm" class="quiz-form">
+            <!-- Pergunta 1 -->
+            <div class="quiz-question-box">
+              <span class="question-number">Pergunta 1 de 3</span>
+              <h4>Como você utiliza ferramentas de IA (como ChatGPT, Claude, Copilot) no seu dia a dia?</h4>
+              <div class="quiz-options">
+                <label class="quiz-option">
+                  <input type="radio" name="q1" value="1" required>
+                  <span class="opt-indicator">A</span>
+                  <span>Copio e colo o código direto sem testar ou ler direito os detalhes.</span>
+                </label>
+                <label class="quiz-option">
+                  <input type="radio" name="q1" value="2">
+                  <span class="opt-indicator">B</span>
+                  <span>Uso apenas para tirar dúvidas de sintaxe ou gerar funções pequenas.</span>
+                </label>
+                <label class="quiz-option">
+                  <input type="radio" name="q1" value="3">
+                  <span class="opt-indicator">C</span>
+                  <span>Uso como copiloto: elaboro contexto detalhado, exijo testes e reviso criticamente cada linha.</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Pergunta 2 -->
+            <div class="quiz-question-box">
+              <span class="question-number">Pergunta 2 de 3</span>
+              <h4>Qual é a sua relação com os fundamentos (HTML Semântico e Linguagens Fortemente Tipadas como Java)?</h4>
+              <div class="quiz-options">
+                <label class="quiz-option">
+                  <input type="radio" name="q2" value="1" required>
+                  <span class="opt-indicator">A</span>
+                  <span>Acho ultrapassado; prefiro usar apenas geradores no-code ou frameworks prontos.</span>
+                </label>
+                <label class="quiz-option">
+                  <input type="radio" name="q2" value="2">
+                  <span class="opt-indicator">B</span>
+                  <span>Conheço o básico para fazer funcionar, mas sinto dificuldade com concorrência ou acessibilidade.</span>
+                </label>
+                <label class="quiz-option">
+                  <input type="radio" name="q2" value="3">
+                  <span class="opt-indicator">C</span>
+                  <span>Domino a estrutura do DOM e a robustez da tipagem, sabendo exatamente quando e por que aplicar cada recurso.</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Pergunta 3 -->
+            <div class="quiz-question-box">
+              <span class="question-number">Pergunta 3 de 3</span>
+              <h4>Quando ocorre um bug complexo em produção, qual a sua primeira reação?</h4>
+              <div class="quiz-options">
+                <label class="quiz-option">
+                  <input type="radio" name="q3" value="1" required>
+                  <span class="opt-indicator">A</span>
+                  <span>Fico perdido e começo a colar o erro na IA sem entender a causa raiz do problema.</span>
+                </label>
+                <label class="quiz-option">
+                  <input type="radio" name="q3" value="2">
+                  <span class="opt-indicator">B</span>
+                  <span>Verifico logs básicos e tento isolar o componente que falhou.</span>
+                </label>
+                <label class="quiz-option">
+                  <input type="radio" name="q3" value="3">
+                  <span class="opt-indicator">C</span>
+                  <span>Analiso stack traces, métricas de memória/threads e uso a IA para formular hipóteses direcionadas.</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="quiz-action text-center">
+              <button type="submit" class="btn btn-primary btn-lg btn-glow">
+                <i class="fa-solid fa-chart-pie"></i>
+                <span>Calcular Meu Diagnóstico</span>
+              </button>
+            </div>
+          </form>
+
+          <!-- Resultado do Quiz -->
+          <div id="quizResult" class="quiz-result-box hidden">
+            <div class="result-header">
+              <div class="result-badge-icon animate-tada" id="resultIcon">
+                <i class="fa-solid fa-trophy"></i>
+              </div>
+              <h3 id="resultTitle">Seu Perfil na Nova Era</h3>
+              <p id="resultScore" class="result-score-tag"></p>
+            </div>
+            <p id="resultText" class="result-desc"></p>
+            <div class="result-recommendations" id="resultTips"></div>
+            <div class="text-center mt-4">
+              <button id="resetQuizBtn" class="btn btn-secondary btn-sm">
+                <i class="fa-solid fa-rotate-left"></i> Refazer Teste
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Rodapé Moderno -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <div class="brand-logo">
+          <div class="logo-symbol animate-glow"><i class="fa-solid fa-code"></i></div>
+          <span class="logo-text">Dev<span class="gradient-text">Era</span></span>
+        </div>
+        <p class="footer-tagline">
+          Inspirando e capacitando a próxima geração de programadores através da união perfeita entre fundamentos sólidos e inteligência artificial.
+        </p>
+      </div>
+
+      <div class="footer-links-col">
+        <h5>Tópicos Principais</h5>
+        <ul>
+          <li><a href="#nova-era">Mudança de Paradigma</a></li>
+          <li><a href="#fundamentos">Evolução do Java</a></li>
+          <li><a href="#fundamentos">HTML Semântico & A11y</a></li>
+          <li><a href="#instrucoes">Roadmap de Instruções</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h5>Fundamentos & Ferramentas</h5>
+        <ul>
+          <li><span>Java 21 LTS & Virtual Threads</span></li>
+          <li><span>HTML5 & Web Components</span></li>
+          <li><span>Engenharia de Prompt Técnico</span></li>
+          <li><span>Arquitetura de Microsserviços</span></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h5>Manifesto da Nova Era</h5>
+        <div class="manifesto-card">
+          <p>"A IA escreve código. O programador escreve o futuro. Domine os fundamentos e lidere a transformação."</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; 2026 DevEra - Portal da Nova Era dos Programadores. Criado com HTML5 semântico, CSS moderno e paixão por tecnologia.</p>
+      <div class="footer-bottom-badges">
+        <span class="status-badge"><span class="badge-dot"></span> Sistemas Operacionais</span>
+        <span class="status-badge"><i class="fa-brands fa-java"></i> Java Ready</span>
+        <span class="status-badge"><i class="fa-brands fa-html5"></i> HTML5 Validated</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal de Login Funcional Gmail / Google -->
+  <div id="gmailModal" class="gmail-modal-backdrop hidden">
+    <div class="gmail-modal-card">
+      <button class="modal-close-btn" id="closeGmailModalBtn" aria-label="Fechar janela">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="modal-google-header">
+        <svg class="google-svg-logo" viewBox="0 0 24 24" width="36" height="36">
+          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+          <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+        </svg>
+        <h3>Fazer login com o Google</h3>
+        <p>Escolha ou digite uma conta para continuar no <strong>DevEra</strong></p>
+      </div>
+
+      <!-- Contas Rápidas Sugeridas -->
+      <div class="google-accounts-list">
+        <button class="account-item-btn" data-email="carlos.dev@gmail.com" data-name="Carlos Dev" data-avatar="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="Carlos" class="account-item-avatar">
+          <div class="account-item-info">
+            <strong>Carlos Dev</strong>
+            <span>carlos.dev@gmail.com</span>
+          </div>
+          <i class="fa-solid fa-chevron-right text-muted"></i>
+        </button>
+
+        <button class="account-item-btn" data-email="mariana.tech@gmail.com" data-name="Mariana Tech" data-avatar="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=120&q=80">
+          <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=120&q=80" alt="Mariana" class="account-item-avatar">
+          <div class="account-item-info">
+            <strong>Mariana Tech</strong>
+            <span>mariana.tech@gmail.com</span>
+          </div>
+          <i class="fa-solid fa-chevron-right text-muted"></i>
+        </button>
+      </div>
+
+      <div class="modal-or-divider">
+        <span>ou digite seu próprio e-mail Gmail</span>
+      </div>
+
+      <!-- Formulário para e-mail próprio -->
+      <form id="customGmailForm" class="custom-gmail-form">
+        <div class="form-group">
+          <label for="customNameInput">Seu Nome ou Apelido</label>
+          <div class="input-with-icon">
+            <i class="fa-regular fa-user"></i>
+            <input type="text" id="customNameInput" placeholder="Ex: Lucas Dev" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="customEmailInput">Endereço de E-mail Gmail</label>
+          <div class="input-with-icon">
+            <i class="fa-regular fa-envelope"></i>
+            <input type="email" id="customEmailInput" placeholder="seunome@gmail.com" required>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block btn-glow">
+          <i class="fa-solid fa-arrow-right-to-bracket"></i>
+          <span>Entrar com esta Conta</span>
+        </button>
+      </form>
+
+      <div class="modal-footer-notice">
+        <i class="fa-solid fa-lock text-cyan"></i>
+        <span>Ambiente seguro. Sessão salva localmente no navegador.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Edição de Perfil (Troca de Foto e Nome) -->
+  <div id="editProfileModal" class="gmail-modal-backdrop hidden">
+    <div class="gmail-modal-card edit-profile-card">
+      <button class="modal-close-btn" id="closeEditProfileModalBtn" aria-label="Fechar janela">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="edit-profile-header">
+        <div class="edit-avatar-container">
+          <img src="" alt="Foto de perfil" class="edit-avatar-preview" id="editAvatarPreview" onerror="this.src='https://ui-avatars.com/api/?name=Dev&background=00f2fe&color=030712&bold=true&size=120'">
+          <label for="avatarFileInput" class="edit-avatar-badge" title="Fazer upload de foto do seu computador">
+            <i class="fa-solid fa-camera"></i>
+          </label>
+          <input type="file" id="avatarFileInput" accept="image/*" class="hidden-file-input">
+        </div>
+        <h3>Editar Meu Perfil</h3>
+        <p>Altere seu nome e foto para personalizar sua presença no <strong>DevEra</strong></p>
+      </div>
+
+      <form id="editProfileForm" class="edit-profile-form">
+        <!-- Campo Nome -->
+        <div class="form-group">
+          <label for="editNameInput">Nome de Exibição</label>
+          <div class="input-with-icon">
+            <i class="fa-regular fa-user"></i>
+            <input type="text" id="editNameInput" placeholder="Digite seu nome ou apelido" required maxlength="30">
+          </div>
+        </div>
+
+        <!-- Seletor de Avatares Rápidos (Presets Dev da Nova Era) -->
+        <div class="form-group">
+          <label>Ou Escolha um Avatar Tecnológico:</label>
+          <div class="avatar-presets-grid" id="avatarPresetsGrid">
+            <!-- Inserido dinamicamente via JS -->
+          </div>
+        </div>
+
+        <!-- Botão para Upload do Computador -->
+        <div class="form-group">
+          <label>Carregar Imagem do seu Dispositivo:</label>
+          <label for="avatarFileInput" class="custom-file-upload-btn">
+            <i class="fa-solid fa-cloud-arrow-up text-cyan"></i>
+            <span>Escolher foto do computador</span>
+          </label>
+        </div>
+
+        <div class="modal-actions-group">
+          <button type="button" class="btn btn-secondary" id="cancelEditProfileBtn">Cancelar</button>
+          <button type="submit" class="btn btn-primary btn-glow">
+            <i class="fa-solid fa-check"></i>
+            <span>Salvar Alterações</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Notificação Toast Flutuante -->
+  <div id="authToast" class="auth-toast hidden">
+    <div class="toast-content">
+      <i class="toast-icon fa-solid fa-circle-check"></i>
+      <div class="toast-message" id="toastMessage">Sessão iniciada com sucesso!</div>
+    </div>
+  </div>
+
+  <!-- Script Principal com Animações (v2.1 - cache bust) -->
+  <script src="script.js?v=20261107"></script>
+</body>
+</html>
